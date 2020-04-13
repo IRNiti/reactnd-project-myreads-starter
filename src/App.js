@@ -1,8 +1,20 @@
 import React from 'react'
-// import * as BooksAPI from './BooksAPI'
+import * as BooksAPI from './BooksAPI'
 import './App.css'
 
+const shelves = [{
+  'label': 'Currently Reading',
+  'api': 'currentlyReading'
+},{
+  'label': 'Want To Read',
+  'api': 'wantToRead'
+},{
+  'label': 'Read',
+  'api': 'read'
+}]
+
 class BooksApp extends React.Component {
+
   state = {
     /**
      * TODO: Instead of using this state variable to keep track of which page
@@ -10,7 +22,24 @@ class BooksApp extends React.Component {
      * users can use the browser's back and forward buttons to navigate between
      * pages, as well as provide a good URL they can bookmark and share.
      */
-    showSearchPage: false
+    showSearchPage: false,
+    books : []
+  }
+
+  componentDidMount() {
+    BooksAPI.getAll()
+    .then((response) => {
+      console.log(response);
+      this.setState(() => ({
+        books : response
+      }));
+
+      shelves.map((shelf) =>{
+        console.log(shelf.label);
+        const shelved_books = response.filter((book) => (book.shelf === shelf.api))
+        console.log(shelved_books);
+      })
+    })
   }
 
   render() {
