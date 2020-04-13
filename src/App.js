@@ -1,6 +1,7 @@
 import React from 'react'
 import * as BooksAPI from './BooksAPI'
 import './App.css'
+import Shelf from './Shelf'
 
 const shelves = [{
   'label': 'Currently Reading',
@@ -38,9 +39,16 @@ class BooksApp extends React.Component {
         console.log(shelf.label);
         const shelved_books = response.filter((book) => (book.shelf === shelf.api))
         console.log(shelved_books);
+        shelved_books.map((book) =>{
+          console.log(book.imageLinks.thumbnail);
+        })
       })
     })
-  }
+  };
+
+  filterBooks = (shelf) => {
+    return this.state.books.filter((book) => (book.shelf === shelf.api))
+  };
 
   render() {
     return (
@@ -72,6 +80,9 @@ class BooksApp extends React.Component {
               <h1>MyReads</h1>
             </div>
             <div className="list-books-content">
+              {shelves.map((shelf) => 
+                (<Shelf shelf={shelf} books={this.filterBooks(shelf)}/>)
+              )}
               <div>
                 <div className="bookshelf">
                   <h2 className="bookshelf-title">Currently Reading</h2>
