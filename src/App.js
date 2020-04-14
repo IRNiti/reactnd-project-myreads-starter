@@ -18,13 +18,26 @@ class BooksApp extends React.Component {
         books : response
       }))
     })
-  };
+  }
+
+  handleUpdateShelf = (book, shelf) => {
+    BooksAPI.update(book, shelf)
+    .then((response) => {
+      //there's probably a better way to do this than retrieving array element by index
+      book.shelf = Object.keys(response).filter((shelf) => (response[shelf].includes(book.id)))[0];
+      this.setState((prevState) => {
+        return{
+          books: [...prevState.books.filter((b) => (b.id !== book.id)), book]
+        }
+      })
+    })
+  }  
 
   render() {
     return (
       <div className="app">
         <Route exact path='/' render={() => (
-          <ShelfList books={this.state.books}/>
+          <ShelfList books={this.state.books} updateShelf={this.handleUpdateShelf}/>
         )} />
         <Route path='/search' render={() => (
           <SearchBooks />

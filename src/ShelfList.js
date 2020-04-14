@@ -27,7 +27,7 @@ class ShelfList extends Component {
             	</div>
             	<div className="list-books-content">
               		{shelves.map((shelf) => 
-                		(<Shelf key={shelf.api} shelf={shelf} books={this.filterBooks(shelf)}/>)
+                		(<Shelf key={shelf.api} shelf={shelf} books={this.filterBooks(shelf)} updateShelf={this.props.updateShelf}/>)
               		)}
             	</div>
             	<Link className='open-search' to='/search'>Search books</Link>
