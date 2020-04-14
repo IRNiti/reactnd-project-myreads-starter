@@ -30,19 +30,9 @@ class BooksApp extends React.Component {
   componentDidMount() {
     BooksAPI.getAll()
     .then((response) => {
-      console.log(response);
       this.setState(() => ({
         books : response
-      }));
-
-      shelves.map((shelf) =>{
-        console.log(shelf.label);
-        const shelved_books = response.filter((book) => (book.shelf === shelf.api))
-        console.log(shelved_books);
-        shelved_books.map((book) =>{
-          console.log(book.imageLinks.thumbnail);
-        })
-      })
+      }))
     })
   };
 
@@ -81,7 +71,7 @@ class BooksApp extends React.Component {
             </div>
             <div className="list-books-content">
               {shelves.map((shelf) => 
-                (<Shelf shelf={shelf} books={this.filterBooks(shelf)}/>)
+                (<Shelf key={shelf.api} shelf={shelf} books={this.filterBooks(shelf)}/>)
               )}
             </div>
             <div className="open-search">
