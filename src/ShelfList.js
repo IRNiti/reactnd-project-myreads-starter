@@ -2,6 +2,17 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import Shelf from './Shelf';
 
+const shelves = [{
+  'label': 'Currently Reading',
+  'api': 'currentlyReading'
+},{
+  'label': 'Want To Read',
+  'api': 'wantToRead'
+},{
+  'label': 'Read',
+  'api': 'read'
+}]
+
 class ShelfList extends Component {
 
 	filterBooks = (shelf) => {
@@ -15,7 +26,7 @@ class ShelfList extends Component {
               		<h1>MyReads</h1>
             	</div>
             	<div className="list-books-content">
-              		{this.props.shelves.map((shelf) => 
+              		{shelves.map((shelf) => 
                 		(<Shelf key={shelf.api} shelf={shelf} books={this.filterBooks(shelf)}/>)
               		)}
             	</div>
