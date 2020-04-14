@@ -1,6 +1,12 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 
 class UpdateShelf extends Component {
+
+	static propTypes = {
+		currentShelf: PropTypes.string.isRequired,
+		updateShelf: PropTypes.func.isRequired
+	}
 
 	handleChange = (event) => {
 		this.props.updateShelf(event.target.value);

@@ -1,9 +1,10 @@
-import React, {Component} from 'react';
+import React from 'react';
 import UpdateShelf from './UpdateShelf';
+import PropTypes from 'prop-types';
 
-class Book extends Component {
+function Book(props) {
 
-	style = (thumbnail) => {
+	const style = (thumbnail) => {
 		return {
 			width: 128,
 			height: 193,
@@ -11,22 +12,25 @@ class Book extends Component {
 		}
 	}
 
-	handleUpdateShelf = (shelf) => {
-		this.props.updateShelf(this.props.book, shelf);
+	const handleUpdateShelf = (shelf) => {
+		props.updateShelf(props.book, shelf);
 	}
 
-	render(){
-		return(
-			<div className="book">
-              <div className="book-top">
-                <div className="book-cover" style={this.style(this.props.book.imageLinks.thumbnail)}></div>
-                <UpdateShelf currentShelf={this.props.book.shelf} updateShelf={this.handleUpdateShelf}/>
-              </div>
-              <div className="book-title">{this.props.book.title}</div>
-              <div className="book-authors">{this.props.book.authors}</div>
-            </div>
-			)
-	}
+	return(
+		<div className="book">
+          <div className="book-top">
+            <div className="book-cover" style={style(props.book.imageLinks.thumbnail)}></div>
+            <UpdateShelf currentShelf={props.book.shelf} updateShelf={handleUpdateShelf}/>
+          </div>
+          <div className="book-title">{props.book.title}</div>
+          <div className="book-authors">{props.book.authors}</div>
+        </div>
+		)
+}
+
+Book.propTypes = {
+	book: PropTypes.object.isRequired,
+	updateShelf: PropTypes.func.isRequired
 }
 
 export default Book;
