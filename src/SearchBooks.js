@@ -45,7 +45,6 @@ class SearchBooks extends Component {
 		if(this.state.query !== '' && this.state.query !== prevState.query){
 			BooksAPI.search(this.state.query)
 			.then((response) => {
-				console.log(response);
 				if(response.error === undefined){
 					let originalBookMap = this.bookMap();
 					response.forEach((book) => {
