@@ -2,7 +2,7 @@
 
 ## Description
 
-This is the completed project for Udacity's React Fundamentals course. The functionality allows you to display books in 3 shelves (Want To Read, Currently Reading, Read) and to update shelves for each book. The app also has a search functionality that allows you to add new books to one of the three shelves (note that not all search terms will work as is explained further on). 
+This is the completed project for Udacity's React Fundamentals course. The functionality allows you to display books in 3 shelves (Want To Read, Currently Reading, Read) and to update shelves for each book. The app also has a search functionality that allows you to add new books to one of the three shelves (note that not all search terms will work as is explained further on). For books with missing information like authors or thumbnails, they will be displayed without those details.
 
 To get started:
 

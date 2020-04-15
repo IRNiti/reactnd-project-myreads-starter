@@ -1,9 +1,10 @@
-import React from 'react';
-import UpdateShelf from './UpdateShelf';
-import PropTypes from 'prop-types';
+import React from 'react'
+import UpdateShelf from './UpdateShelf'
+import PropTypes from 'prop-types'
 
 function Book(props) {
 
+	// manipulating the style tag to handle books without thumbnails
 	const style = (imageLinks) => {
 		if(imageLinks !== undefined){
 			return {
@@ -20,6 +21,7 @@ function Book(props) {
 		
 	}
 
+	// pass in the current book to the updateShelf function
 	const handleUpdateShelf = (shelf) => {
 		props.updateShelf(props.book, shelf);
 	}

@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
-import * as BooksAPI from './BooksAPI';
-import Book from './Book';
-import PropTypes from 'prop-types';
+import React, {Component} from 'react'
+import {Link} from 'react-router-dom'
+import * as BooksAPI from './BooksAPI'
+import Book from './Book'
+import PropTypes from 'prop-types'
 
 class SearchBooks extends Component {
 
@@ -16,6 +16,7 @@ class SearchBooks extends Component {
 		displayedBooks: []
 	}
 
+	// update query value and clear list of books to be displayed if query is empty
 	handleChange = (event) => {
 		const queryInput = event.target.value;
 		this.setState({
@@ -29,12 +30,17 @@ class SearchBooks extends Component {
 		}
 	}
 
+	// map between book id and shelf for shelved books
+	// will be used to display current shelf for books that have one in search results
 	bookMap = () => {
 		let myBookMap = {};
 		this.props.books.forEach(book => (myBookMap[book.id] = book.shelf));
 		return myBookMap;
 	}
 
+	// when component updates due to a change in state query, retrieve results from server
+	// the API is only called when the query has changed and when it is not empty
+	// the state query is checked one last time before displayedBooks is updated in order to avoid race conditions
 	componentDidUpdate(prevProps, prevState){
 		if(this.state.query !== '' && this.state.query !== prevState.query){
 			BooksAPI.search(this.state.query)
@@ -65,14 +71,6 @@ class SearchBooks extends Component {
 	            <div className="search-books-bar">
 	              <Link className="close-search" to='/'>Close</Link>
 	              <div className="search-books-input-wrapper">
-	                {/*
-	                  NOTES: The search from BooksAPI is limited to a particular set of search terms.
-	                  You can find these search terms here:
-	                  https://github.com/udacity/reactnd-project-myreads-starter/blob/master/SEARCH_TERMS.md
-
-	                  However, remember that the BooksAPI.search method DOES search by title or author. So, don't worry if
-	                  you don't find a specific author or title. Every search is limited by search terms.
-	                */}
 	                <input 
 	                	type="text" 
 	                	placeholder="Search by title or author"

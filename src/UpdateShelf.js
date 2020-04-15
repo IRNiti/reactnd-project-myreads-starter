@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import PropTypes from 'prop-types';
+import React, {Component} from 'react'
+import PropTypes from 'prop-types'
 
 class UpdateShelf extends Component {
 
@@ -8,10 +8,12 @@ class UpdateShelf extends Component {
 		updateShelf: PropTypes.func.isRequired
 	}
 
+	// update shelf with the value selected
 	handleChange = (event) => {
 		this.props.updateShelf(event.target.value);
 	}
 
+	// display none if no shelf is available in props (for books looked up in the search page)
 	render(){
 		return(
 			<div className="book-shelf-changer">

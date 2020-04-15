@@ -1,5 +1,5 @@
 import React from 'react'
-import {Route} from 'react-router-dom';
+import {Route} from 'react-router-dom'
 import * as BooksAPI from './BooksAPI'
 import './App.css'
 import SearchBooks from './SearchBooks'
@@ -11,6 +11,7 @@ class BooksApp extends React.Component {
     books : []
   }
 
+  // retrieve all books from server when app is first instantiated
   componentDidMount() {
     BooksAPI.getAll()
     .then((response) => {
@@ -20,10 +21,10 @@ class BooksApp extends React.Component {
     })
   }
 
+  // update book shelf in the database and then update app state with returned values
   handleUpdateShelf = (book, shelf) => {
     BooksAPI.update(book, shelf)
     .then((response) => {
-      //there's probably a better way to do this than retrieving array element by index
       book.shelf = Object.keys(response).filter((shelf) => (response[shelf].includes(book.id)))[0];
       this.setState((prevState) => {
         return{
