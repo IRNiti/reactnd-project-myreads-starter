@@ -17,9 +17,17 @@ class SearchBooks extends Component {
 	}
 
 	handleChange = (event) => {
+		const queryInput = event.target.value;
+		console.log(queryInput);
 		this.setState({
-			query: event.target.value
+			query: queryInput
 		}) 
+
+		if(queryInput === ''){
+			this.setState({
+				displayedBooks: []
+			})
+		}
 	}
 
 	bookMap = () => {
@@ -39,19 +47,15 @@ class SearchBooks extends Component {
 							book.shelf = originalBookMap[book.id];
 						}
 					})
-					this.setState({
-						displayedBooks: response
-					})
+					if(this.state.query !== ''){
+						this.setState({
+							displayedBooks: response
+						})
+					}
 				}
 			})
 			.catch(err => {
 				console.log(err);
-			})
-		}
-
-		if(this.state.query === '' && this.state.query !== prevState.query){
-			this.setState({
-				displayedBooks: []
 			})
 		}
 	}
