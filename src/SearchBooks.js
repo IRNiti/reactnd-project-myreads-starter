@@ -18,7 +18,6 @@ class SearchBooks extends Component {
 
 	handleChange = (event) => {
 		const queryInput = event.target.value;
-		console.log(queryInput);
 		this.setState({
 			query: queryInput
 		}) 
