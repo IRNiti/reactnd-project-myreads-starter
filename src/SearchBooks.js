@@ -21,7 +21,7 @@ class SearchBooks extends Component {
 		const queryInput = event.target.value;
 		this.setState({
 			query: queryInput
-		}) 
+		})
 
 		if(queryInput === ''){
 			this.setState({
@@ -71,8 +71,8 @@ class SearchBooks extends Component {
 	            <div className="search-books-bar">
 	              <Link className="close-search" to="/">Close</Link>
 	              <div className="search-books-input-wrapper">
-	                <input 
-	                	type="text" 
+	                <input
+	                	type="text"
 	                	placeholder="Search by title or author"
 	                	value={this.state.query}
 	                	onChange={this.handleChange}

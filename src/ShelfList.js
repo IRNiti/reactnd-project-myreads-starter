@@ -28,7 +28,7 @@ function ShelfList(props){
           		<h1>MyReads</h1>
         	</div>
         	<div className="list-books-content">
-          		{shelves.map((shelf) => 
+          		{shelves.map((shelf) =>
             		(<Shelf key={shelf.api} shelf={shelf} books={filterBooks(shelf)} updateShelf={props.updateShelf}/>)
           		)}
         	</div>

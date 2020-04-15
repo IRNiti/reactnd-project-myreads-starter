@@ -18,7 +18,6 @@ function Book(props) {
 				height: 193
 			}
 		}
-		
 	}
 
 	// pass in the current book to the updateShelf function
@@ -39,7 +38,7 @@ function Book(props) {
           	)}
           </div>
         </div>
-		)
+	)
 }
 
 Book.propTypes = {
