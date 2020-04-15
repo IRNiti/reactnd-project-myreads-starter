@@ -17,15 +17,13 @@ class UpdateShelf extends Component {
 	render(){
 		return(
 			<div className="book-shelf-changer">
-				<form>
-					<select value={this.props.currentShelf === undefined ? "none" : this.props.currentShelf} onChange={this.handleChange}>
-	                    <option value="move" disabled>Move to...</option>
-	                    <option value="currentlyReading">Currently Reading</option>
-	                    <option value="wantToRead">Want to Read</option>
-	                    <option value="read">Read</option>
-	                    <option value="none">None</option>
-                  </select>
-				</form>
+				<select value={this.props.currentShelf === undefined ? "none" : this.props.currentShelf} onChange={this.handleChange}>
+                    <option value="move" disabled>Move to...</option>
+                    <option value="currentlyReading">Currently Reading</option>
+                    <option value="wantToRead">Want to Read</option>
+                    <option value="read">Read</option>
+                    <option value="none">None</option>
+              </select>
 			</div>
 		)
 	}
