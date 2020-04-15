@@ -33,7 +33,11 @@ function Book(props) {
             <UpdateShelf currentShelf={props.book.shelf} updateShelf={handleUpdateShelf}/>
           </div>
           <div className="book-title">{props.book.title}</div>
-          <div className="book-authors">{props.book.authors}</div>
+          <div className="book-authors">
+          	{props.book.authors === undefined ? '' : props.book.authors.map((author) =>
+          		(<div key={author}>{author}<br/></div>)
+          	)}
+          </div>
         </div>
 		)
 }
