@@ -32,7 +32,7 @@ function ShelfList(props){
             		(<Shelf key={shelf.api} shelf={shelf} books={filterBooks(shelf)} updateShelf={props.updateShelf}/>)
           		)}
         	</div>
-        	<Link className='open-search' to='/search'>Search books</Link>
+        	<Link className="open-search" to="/search">Search books</Link>
       	</div>
 	)
 }
