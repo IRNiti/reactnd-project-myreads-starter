@@ -4,12 +4,20 @@ import PropTypes from 'prop-types';
 
 function Book(props) {
 
-	const style = (thumbnail) => {
-		return {
-			width: 128,
-			height: 193,
-			backgroundImage: `url(${thumbnail})`
+	const style = (imageLinks) => {
+		if(imageLinks !== undefined){
+			return {
+				width: 128,
+				height: 193,
+				backgroundImage: `url(${imageLinks.thumbnail})`
+			}
+		} else {
+			return {
+				width: 128,
+				height: 193
+			}
 		}
+		
 	}
 
 	const handleUpdateShelf = (shelf) => {
@@ -19,7 +27,7 @@ function Book(props) {
 	return(
 		<div className="book">
           <div className="book-top">
-            <div className="book-cover" style={style(props.book.imageLinks.thumbnail)}></div>
+            <div className="book-cover" style={style(props.book.imageLinks)}></div>
             <UpdateShelf currentShelf={props.book.shelf} updateShelf={handleUpdateShelf}/>
           </div>
           <div className="book-title">{props.book.title}</div>
